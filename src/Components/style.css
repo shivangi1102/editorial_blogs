@@ -1,0 +1,11 @@
+.article{
+    margin-top: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.container{
+    max-width: 500px;
+    margin: auto;
+    margin-top: 40px;
+}
