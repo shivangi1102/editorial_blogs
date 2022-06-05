@@ -1,6 +1,8 @@
 import React from 'react'
 import { Form,Button } from 'react-bootstrap'
 import './style.css'
+import { useLocation } from 'react-router-dom'
+import { useState,useEffect } from 'react'
 
 const ReviewPage = () => {
   const location = useLocation();

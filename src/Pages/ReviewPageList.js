@@ -26,7 +26,7 @@ export default function ReviewPageListPage() {
         <>
             {articles.map((item) => {
                 console.log(item)
-                return <ReviewPage key={item.id} {...item} admin={admin} />
+                return <ReviewPage key={item.id} {...item}  />
             })}
         </>
     )

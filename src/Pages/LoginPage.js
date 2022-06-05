@@ -6,7 +6,7 @@ import { SignUpPage } from './SignUpPage';
 import { useNavigate } from 'react-router-dom';
 
 export const LoginPage = () => {
-  const star=treue;
+  const star=true;
    const [email,setEmail]=useState(" ");
    const [password,setPassword]=useState("");
    const [question,setQuestion]=useState(" ");
