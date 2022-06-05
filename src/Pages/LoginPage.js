@@ -14,27 +14,25 @@ export const LoginPage = () => {
    const url =  'http://localhost:8080/EditorialBlog/login?'
    var data;
     const handleSubmit = (e) =>{
-      try {
-        const response =  fetch(`${url}username=${email}&password=${password}`, {
-          method: 'GET',
-          headers: {
-            Accept: 'application/json',
-          },
-        });
-  
-        if (!response.ok) {
-          throw new Error(`Error! status: ${response.status}`);
-        }
-  
-        const result =  response.json();
-  
-        console.log('result is: ', JSON.stringify(result, null, 4));
-  
-        setLogin(result);
-      } 
-      catch(error){}
-    };
-   
+
+    }
+    async function loginFetch() {
+    try {
+      const response =  fetch(`${url}username=${email}&password=${password}`, {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+        },
+      });
+     console.log("hello")
+      setLogin(response.json);
+    } 
+    catch(error){}
+  };
+  React.useEffect(() => {
+    loginFetch();
+}, [])
+ 
     const handleClick = ()=>{
         setSignup(!signup);
     }
