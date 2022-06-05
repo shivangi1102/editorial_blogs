@@ -10,30 +10,31 @@ export const LoginPage = () => {
    const [password,setPassword]=useState("");
    const [signup,setSignup]=useState(true);
    const nav = useNavigate();
-
+   const [login, setLogin] = React.useState([])
+   const url =  'http://localhost:8080/EditorialBlog/login?'
+   var data;
     const handleSubmit = (e) =>{
-        e.preventDefault();
-       
-        
-    } 
-    const [login, setLogin] = React.useState([])
-
-    const url =  'http://localhost:8080/EditorialBlog/login?'
-
-    async function loginFetch() {
-        try {
-
-            const response = await fetch(`${url}username=${email}&password=${password}`)
-            const data = await response.json()
-            console.log(data);
-            setLogin(data)
+      try {
+        const response =  fetch(`${url}username=${email}&password=${password}`, {
+          method: 'GET',
+          headers: {
+            Accept: 'application/json',
+          },
+        });
+  
+        if (!response.ok) {
+          throw new Error(`Error! status: ${response.status}`);
         }
-        catch (error) {
-        }
-    }
-    React.useEffect(() => {
-        loginFetch();
-    }, [])
+  
+        const result =  response.json();
+  
+        console.log('result is: ', JSON.stringify(result, null, 4));
+  
+        setLogin(result);
+      } 
+      catch(error){}
+    };
+   
     const handleClick = ()=>{
         setSignup(!signup);
     }
@@ -59,7 +60,13 @@ export const LoginPage = () => {
   <Button variant="primary" type="submit" onClick={handleSubmit}>
     Login
   </Button>
+  <Form.Group className="mb-3" controlId="formBasicPassword">
+    <Form.Label>Password</Form.Label>
+    <Form.Control type="password" name="password" placeholder="Password"  value={password} onChange={(e)=> {setPassword(e.target.value)}}/>
+  </Form.Group>
+
 </Form>
+
 <h2 onClick={handleClick}>New to Editorial <b>Sign Up</b></h2>
    </div>:
    <SignUpPage/>
