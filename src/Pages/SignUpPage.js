@@ -2,6 +2,8 @@ import { Button, Container } from 'react-bootstrap'
 import Form from 'react-bootstrap/Form'
 import React, { useState, useEffect } from 'react'
 import './style.css';
+import { useNavigate } from 'react-router-dom';
+
 
 export const SignUpPage = () => {
   const [userRegistration, setUserRegistration] = useState({
@@ -13,6 +15,7 @@ export const SignUpPage = () => {
     answer: "",
     question: "",
   })
+  const nav = useNavigate();
   const handleInput = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -21,7 +24,8 @@ export const SignUpPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const newrecord = { ...userRegistration }
-    console.log(newrecord);
+    nav(`/home/${userRegistration.userType}`)
+    //console.log(newrecord);
   }
   const securityQuestion = "What is your pet name?"
   useEffect(() => {
@@ -88,7 +92,7 @@ export const SignUpPage = () => {
             <Form.Control type="text" name="answer" value={userRegistration.answer} onChange={handleInput} />
           </Form.Group>
           <br />
-          <Button variant="primary" type="submit">
+         <Button variant="primary" type="submit" >
             Sign Up
           </Button>
         </Form>
