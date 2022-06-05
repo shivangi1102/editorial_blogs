@@ -6,8 +6,11 @@ import { SignUpPage } from './SignUpPage';
 import { useNavigate } from 'react-router-dom';
 
 export const LoginPage = () => {
+  const star=treue;
    const [email,setEmail]=useState(" ");
    const [password,setPassword]=useState("");
+   const [question,setQuestion]=useState(" ");
+   const [answer,setAnswer]=useState("");
    const [signup,setSignup]=useState(true);
    const nav = useNavigate();
    const [login, setLogin] = React.useState([])
@@ -22,7 +25,7 @@ export const LoginPage = () => {
             headers: {
               Accept: 'application/json',
             },
-          });
+          })
          console.log("hello")
           setLogin(response.json);
         } 
@@ -54,14 +57,22 @@ export const LoginPage = () => {
     <Form.Label>Password</Form.Label>
     <Form.Control type="password" name="password" placeholder="Password"  value={password} onChange={(e)=> {setPassword(e.target.value)}}/>
   </Form.Group>
+  { star ?
   <Button variant="primary" type="submit" onClick={handleSubmit}>
     Login
   </Button>
-  <Form.Group className="mb-3" controlId="formBasicPassword">
-    <Form.Label>Password</Form.Label>
-    <Form.Control type="password" name="password" placeholder="Password"  value={password} onChange={(e)=> {setPassword(e.target.value)}}/>
+  :
+  <>
+  <Form.Group className="mb-3">
+    <Form.Label>Security Question</Form.Label>
+    <Form.Control type="text" name="password"  value={question} onChange={(e)=> {setQuestion(e.target.value)}}/>
   </Form.Group>
-
+  <Form.Group className="mb-3">
+  <Form.Label>Security Answer</Form.Label>
+  <Form.Control type="text" name="password"   value={answer} onChange={(e)=> {setAnswer(e.target.value)}}/>
+</Form.Group>
+</>
+}
 </Form>
 
 <h2 onClick={handleClick}>New to Editorial <b>Sign Up</b></h2>

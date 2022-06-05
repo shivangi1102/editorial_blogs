@@ -10,6 +10,7 @@ import {
 import Edit from './Components/Edit';
 import Newarticle from './Pages/Newarticle';
 import ReviewPage from './Pages/ReviewPage';
+import ReviewPageListPage from './Pages/ReviewPageList';
 
 function App() {
   return (
@@ -20,7 +21,8 @@ function App() {
           <Route path="/home/:id" element={<HomePage/>}/>
           <Route path="/home/:id/edit" element={<Edit/>}/>
           <Route path="/home/:id/new" element={<Newarticle/>}/>
-          <Route path="/home/:id/review" element={<ReviewPage/>}/>
+          <Route path="/home/:id/review" element={<ReviewPageListPage/>}/>
+          <Route path="/home/:id/reviewP" element={<ReviewPage/>}/>
         </Routes>
         </Router>
     
